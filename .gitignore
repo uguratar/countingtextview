@@ -76,3 +76,5 @@ ehthumbs.db
 Thumbs.db
 version.properties
 local.properties
+gradlew
+gradlew.bat
