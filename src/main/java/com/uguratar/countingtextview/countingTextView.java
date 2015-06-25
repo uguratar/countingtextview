@@ -1,10 +1,12 @@
 package com.uguratar.countingtextview;
 
+import android.animation.TimeInterpolator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
 
 public class countingTextView extends TextView {
@@ -16,6 +18,8 @@ public class countingTextView extends TextView {
     private int duration = 1200;
 
     private String format = "%d";
+
+    private TimeInterpolator interpolator;
 
 
     public countingTextView(Context context, AttributeSet attrs, int defStyle) {
@@ -47,6 +51,8 @@ public class countingTextView extends TextView {
 
         duration = a.getInt(
                 R.styleable.countingTextView_duration, 1200);
+
+        interpolator = new AccelerateDecelerateInterpolator();
 
     }
 
@@ -82,6 +88,7 @@ public class countingTextView extends TextView {
         setEndValue(endValue);
 
         ValueAnimator animator = ValueAnimator.ofInt(startValue, endValue);
+        animator.setInterpolator(getInterpolator());
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
                 setText(String.format(getFormat(), animation.getAnimatedValue()));
@@ -130,4 +137,13 @@ public class countingTextView extends TextView {
     public void setFormat(String format) {
         this.format = format;
     }
+
+    public TimeInterpolator getInterpolator() {
+        return interpolator;
+    }
+
+    public void setInterpolator(TimeInterpolator interpolator) {
+        this.interpolator = interpolator;
+    }
+
 }
