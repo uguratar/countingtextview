@@ -43,3 +43,6 @@ After adding your countingtextview you can use the methods to animate your textv
 ####Note: animation sequencing is not implemented yet, so the library can't play animations in order. So you should use one of the methods above to animate your textview.
 
 Feel free to contribute by sending a PR, creating an issue or tweeting me @uuratar.
+
+And thanks for the inspiration;
+http://stackoverflow.com/a/24389011/3399234
