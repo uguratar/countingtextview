@@ -46,3 +46,5 @@ Feel free to contribute by sending a PR, creating an issue or tweeting me @uurat
 
 And thanks for the inspiration;
 http://stackoverflow.com/a/24389011/3399234
+
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-countingtextview-green.svg?style=flat)](https://android-arsenal.com/details/1/2277)
