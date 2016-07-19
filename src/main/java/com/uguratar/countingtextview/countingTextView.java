@@ -50,11 +50,18 @@ public class countingTextView extends TextView {
      * @param defStyle
      */
     private void init(AttributeSet attrs, int defStyle) {
-        final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.countingTextView, defStyle, 0);
-
-        duration = a.getInt(
-                R.styleable.countingTextView_duration, 1200);
+        TypedArray a = null;
+        try {
+            a =
+                    getContext().obtainStyledAttributes(
+                            attrs, R.styleable.countingTextView, defStyle, 0);
+            duration = a.getInt(
+                    R.styleable.countingTextView_duration, 1200);
+        } finally {
+            if (a != null) {
+                a.recycle();
+            }
+        }
 
         interpolator = new AccelerateDecelerateInterpolator();
 
@@ -139,7 +146,6 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the startValue
-     * @return
      */
     public int getStartValue() {
         return startValue;
@@ -147,7 +153,6 @@ public class countingTextView extends TextView {
 
     /**
      * Sets the startValue
-     * @param startValue
      */
     public void setStartValue(int startValue) {
         this.startValue = startValue;
@@ -155,7 +160,6 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the endValue
-     * @return
      */
     public int getEndValue() {
         return endValue;
