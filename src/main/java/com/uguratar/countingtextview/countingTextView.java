@@ -69,7 +69,7 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from zero to current endValue, with duration
-     * @param duration
+     * @param duration animation duration
      */
     public void animateFromZerotoCurrentValue(Integer duration) {
         setDuration(duration);
@@ -85,8 +85,8 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from zero to given endValue with given duration
-     * @param endValue
-     * @param duration
+     * @param endValue value animate to
+     * @param duration value animate to
      */
     public void animateFromZero(Integer endValue, Integer duration) {
         setDuration(duration);
@@ -95,7 +95,7 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from zero to given endValue
-     * @param endValue
+     * @param endValue value animate to
      */
     public void animateFromZero(Integer endValue) {
         animateText(0, endValue);
@@ -103,7 +103,7 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from startValue to endValue with given duration
-     * @param duration
+     * @param duration value animate to
      */
     public void animateText(Integer duration) {
         setDuration(duration);
@@ -119,8 +119,8 @@ public class countingTextView extends TextView {
 
     /**
      * Actual method that plays the animation with given values
-     * @param startValue
-     * @param endValue
+     * @param startValue value animate from
+     * @param endValue value animate to
      */
     public void animateText(Integer startValue, Integer endValue) {
         setStartValue(startValue);
@@ -167,7 +167,7 @@ public class countingTextView extends TextView {
 
     /**
      * Sets the endValue
-     * @param endValue
+     * @param endValue value animate to
      */
     public void setEndValue(int endValue) {
         this.endValue = endValue;
@@ -175,7 +175,7 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the duration
-     * @return
+     * @return animation duration
      */
     public int getDuration() {
         return duration;
@@ -183,7 +183,7 @@ public class countingTextView extends TextView {
 
     /**
      * Sets the duration
-     * @param duration
+     * @param duration animation duration
      */
     public void setDuration(int duration) {
         this.duration = duration;
@@ -191,7 +191,7 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the format, default is %s
-     * @return
+     * @return current format
      */
     public String getFormat() {
         return format;
@@ -200,7 +200,7 @@ public class countingTextView extends TextView {
     /**
      * Sets the string format of your choice
      * See: http://developer.android.com/reference/java/util/Formatter.html
-     * @param format
+     * @param format fromat to text displaying
      */
     public void setFormat(String format) {
         this.format = format;
@@ -208,7 +208,7 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the interpolator
-     * @return
+     * @return current time interpolator
      */
     public TimeInterpolator getInterpolator() {
         return interpolator;
@@ -217,7 +217,7 @@ public class countingTextView extends TextView {
     /**
      * Sets the interpolator
      * See: http://developer.android.com/reference/android/view/animation/Interpolator.html
-     * @param interpolator
+     * @param interpolator set interpolator for counting animation
      */
     public void setInterpolator(TimeInterpolator interpolator) {
         this.interpolator = interpolator;
