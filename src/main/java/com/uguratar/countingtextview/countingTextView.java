@@ -21,6 +21,8 @@ public class countingTextView extends TextView {
 
     private TimeInterpolator interpolator;
 
+    private ValueAnimator animator;
+
 
     public countingTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -46,8 +48,6 @@ public class countingTextView extends TextView {
 
     /**
      * Initial method that sets default duration and default interpolator
-     * @param attrs
-     * @param defStyle
      */
     private void init(AttributeSet attrs, int defStyle) {
         TypedArray a = null;
@@ -69,6 +69,7 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from zero to current endValue, with duration
+     *
      * @param duration animation duration
      */
     public void animateFromZerotoCurrentValue(Integer duration) {
@@ -85,6 +86,7 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from zero to given endValue with given duration
+     *
      * @param endValue value animate to
      * @param duration value animate to
      */
@@ -95,6 +97,7 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from zero to given endValue
+     *
      * @param endValue value animate to
      */
     public void animateFromZero(Integer endValue) {
@@ -103,6 +106,7 @@ public class countingTextView extends TextView {
 
     /**
      * Animates from startValue to endValue with given duration
+     *
      * @param duration value animate to
      */
     public void animateText(Integer duration) {
@@ -119,8 +123,9 @@ public class countingTextView extends TextView {
 
     /**
      * Actual method that plays the animation with given values
+     *
      * @param startValue value animate from
-     * @param endValue value animate to
+     * @param endValue   value animate to
      */
     public void animateText(Integer startValue, Integer endValue) {
         setStartValue(startValue);
@@ -141,6 +146,11 @@ public class countingTextView extends TextView {
         });
 
         animator.setDuration(getDuration());
+
+        if (this.animator != null) {
+            this.animator.cancel();
+        }
+        this.animator = animator;
         animator.start();
     }
 
@@ -167,6 +177,7 @@ public class countingTextView extends TextView {
 
     /**
      * Sets the endValue
+     *
      * @param endValue value animate to
      */
     public void setEndValue(int endValue) {
@@ -175,6 +186,7 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the duration
+     *
      * @return animation duration
      */
     public int getDuration() {
@@ -183,6 +195,7 @@ public class countingTextView extends TextView {
 
     /**
      * Sets the duration
+     *
      * @param duration animation duration
      */
     public void setDuration(int duration) {
@@ -191,6 +204,7 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the format, default is %s
+     *
      * @return current format
      */
     public String getFormat() {
@@ -198,8 +212,8 @@ public class countingTextView extends TextView {
     }
 
     /**
-     * Sets the string format of your choice
-     * See: http://developer.android.com/reference/java/util/Formatter.html
+     * Sets the string format of your choice See: http://developer.android.com/reference/java/util/Formatter.html
+     *
      * @param format fromat to text displaying
      */
     public void setFormat(String format) {
@@ -208,6 +222,7 @@ public class countingTextView extends TextView {
 
     /**
      * Gets the interpolator
+     *
      * @return current time interpolator
      */
     public TimeInterpolator getInterpolator() {
@@ -215,8 +230,8 @@ public class countingTextView extends TextView {
     }
 
     /**
-     * Sets the interpolator
-     * See: http://developer.android.com/reference/android/view/animation/Interpolator.html
+     * Sets the interpolator See: http://developer.android.com/reference/android/view/animation/Interpolator.html
+     *
      * @param interpolator set interpolator for counting animation
      */
     public void setInterpolator(TimeInterpolator interpolator) {
